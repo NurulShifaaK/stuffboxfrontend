@@ -80,7 +80,7 @@ const Home = () => {
             onClick={sendemail} 
             className='bg-white/40 text-black/70 px-14 py-1 rounded '>{status?"Sending":"send"}</button>
         </div>
-
+git commit -m "Fix build: Tailwind background syntax"
     </div>
     </>
   )
