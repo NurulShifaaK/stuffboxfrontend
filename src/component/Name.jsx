@@ -6,11 +6,10 @@ const Name = () => {
   return (
     <>
  
-      <div
-        className="h-screen bg-[#8a74c2] 
-        [background-image:repeating-linear-gradient(to_right,rgba(255,255,255,0.08)_0,rgba(255,255,255,0.08)_2px,transparent_1px,transparent_128px),repeating-linear-gradient(to_bottom,rgba(255,255,255,0.08)_0,rgba(255,255,255,0.08)_2px,transparent_1px,transparent_128px)]
-        relative">
-      </div>
+   <div
+  className="h-screen bg-[#8a74c2] [background-image:repeating-linear-gradient(to right,rgba(255,255,255,0.08)_0,rgba(255,255,255,0.08)_2px,transparent_1px,transparent_128px),repeating-linear-gradient(to bottom,rgba(255,255,255,0.08)_0,rgba(255,255,255,0.08)_2px,transparent_1px,transparent_128px)] relative"
+>
+</div>
 
      <div className="absolute top-1 left-1 w-full text-center text-white">
           <Navbar />
