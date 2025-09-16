@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {auth,googleProvider} from "../firebase"
 import { Link, useNavigate } from 'react-router-dom'
 import GoogleLogo from "../assets/google.png";
@@ -8,6 +8,18 @@ const Login = () => {
     const[Uemail,setUemail]=useState("")
     const[pass,setpass]=useState("")
     const navi=useNavigate()
+
+    useEffect(()=>{
+        auth.onAuthStateChanged(function(Uemail){
+            if(Uemail){
+                console.log("Loggedin")
+                navi("/home")
+            }
+            else{
+                console.log("logged out")
+            }
+        })
+    })
 
     const handlelogin=async(e)=>{
         e.preventDefault();

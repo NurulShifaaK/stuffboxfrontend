@@ -1,8 +1,20 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import {auth} from "../firebase"
+import {signOut} from 'firebase/auth'
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navi=useNavigate()
+  function logout()
+  {
+    signOut(auth).then(()=>{
+
+       alert("Sucessfully Loggedout") 
+    navi("/login")
+    })
+  }
 
   return (
     <div className="">
@@ -43,14 +55,15 @@ const Navbar = () => {
         </ul>
 
         {/* Desktop Buttons */}
-        {/* <div className="hidden lg:flex items-center space-x-3">
-          <a className="py-2 px-6 bg-white hover:bg-gray-100 text-sm text-gray-800 font-bold rounded-xl transition duration-200">
+        
+        <div className="hidden lg:flex items-center space-x-3">
+          <Link to={"/signup"} className="py-2 px-6 bg-white hover:bg-gray-100 text-sm text-gray-800 font-bold rounded-xl transition duration-200">
             Sign In
+          </Link>
+          <a onClick={logout} className="py-2 px-6 bg-black hover:bg-rose-300 text-sm text-white font-bold rounded-xl transition duration-200">
+            Logout
           </a>
-          <a className="py-2 px-6 bg-black hover:bg-rose-300 text-sm text-white font-bold rounded-xl transition duration-200">
-            Sign Up
-          </a>
-        </div> */}
+        </div>
       </nav>
 
       {/* Mobile Menu */}
@@ -98,7 +111,7 @@ const Navbar = () => {
                 Sign in
               </Link>
               <Link to={"/signup"} className="block px-4 py-3 mb-2 text-xs text-center text-white font-semibold bg-black hover:bg-rose-300 rounded-xl">
-                Sign Up
+                logout
               </Link>
              
             </div>
