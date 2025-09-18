@@ -53,7 +53,7 @@ const Home = () => {
 const sendemail = () => {
   setstatus(true);
 
- var post= axios.post(`${API_URL}/sendemail`, {
+ var post= axios.post("https://mailbackend-5.onrender.com/sendemail", {
     msg: msg,
     emailList: emailList
   })
