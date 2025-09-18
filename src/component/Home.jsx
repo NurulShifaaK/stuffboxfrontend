@@ -3,7 +3,7 @@ import axios from 'axios'
 import * as XLSX from "xlsx"
 import Navbar from './Navbar'
 
-const API_URL="https://mailbackend-uvla.onrender.com";
+const API_URL="https://mailbackend-5.onrender.com";
 
 const Home = () => {
     const[msg,setmsg]=useState("")
