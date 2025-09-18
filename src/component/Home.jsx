@@ -53,11 +53,11 @@ const Home = () => {
 const sendemail = () => {
   setstatus(true);
 
-  axios.post(`${API_URL}/sendemail`, {
+ var post= axios.post(`${API_URL}/sendemail`, {
     msg: msg,
     emailList: emailList
   })
-  .then((res) => {
+  post.then((res) => {
     if (res.data.success) {
       alert("✅ Email Sent Successfully");
     } else {
