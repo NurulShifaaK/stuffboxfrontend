@@ -28,25 +28,49 @@ const Home = () => {
   reader.readAsArrayBuffer(file);
     }
 
-    const sendemail=()=>{
-        setstatus(true)
-    //  axios.post("https://mailbackend-uvla.onrender.com/sendemail",
-    //   {msg:msg,emailList:emailList})
+//     const sendemail=()=>{
+//         setstatus(true)
+//     //  axios.post("https://mailbackend-uvla.onrender.com/sendemail",
+//     //   {msg:msg,emailList:emailList})
 
-    axios.post("https://mailbackend-uvla.onrender.com/sendemail", {
-  msg: msg,
-  emailList: emailList
-})
-     .then(function(data){
-        if(data.data === true){
-            alert("Email Sent Sucessfully")
-            setstatus(false)
-        }
-        else{
-            alert("Email Failed try again")
-        }
-     })
+//     axios.post("https://mailbackend-uvla.onrender.com/sendemail", {
+//   msg: msg,
+//   emailList: emailList
+// })
+//      .then(function(data){
+//         if(data.data === true){
+//             alert("Email Sent Sucessfully")
+//             setstatus(false)
+//         }
+//         else{
+//             alert("Email Failed try again")
+//         }
+//      })
+//     }
+
+const sendemail = () => {
+  setstatus(true);
+
+  axios.post("https://mailbackend-uvla.onrender.com/sendemail", {
+    msg: msg,
+    emailList: emailList
+  })
+  .then((res) => {
+    if (res.data.success) {
+      alert("✅ Email Sent Successfully");
+    } else {
+      alert("❌ Email Failed, try again");
     }
+    setstatus(false);
+  })
+  .catch((err) => {
+    console.error("Error sending email:", err);
+    alert("⚠️ Something went wrong while sending email");
+    setstatus(false);
+  });
+};
+
+
   return (
 
       <>
