@@ -3,6 +3,8 @@ import axios from 'axios'
 import * as XLSX from "xlsx"
 import Navbar from './Navbar'
 
+const API_URL = "https://signin-backend-e8j7.onrender.com";
+
 const Home = () => {
     const[msg,setmsg]=useState("")
     const[status,setstatus]=useState(false)
@@ -51,7 +53,7 @@ const Home = () => {
 const sendemail = () => {
   setstatus(true);
 
-  axios.post("https://mailbackend-uvla.onrender.com/sendemail", {
+  axios.post(`${API_URL}/sendemail`, {
     msg: msg,
     emailList: emailList
   })
