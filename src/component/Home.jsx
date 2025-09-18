@@ -30,8 +30,13 @@ const Home = () => {
 
     const sendemail=()=>{
         setstatus(true)
-     axios.post("https://mailbackend-uvla.onrender.com/sendemail",
-      {msg:msg,emailList:emailList})
+    //  axios.post("https://mailbackend-uvla.onrender.com/sendemail",
+    //   {msg:msg,emailList:emailList})
+
+    axios.post("https://mailbackend-uvla.onrender.com/sendemail", {
+  msg: msg,
+  emailList: emailList
+})
      .then(function(data){
         if(data.data === true){
             alert("Email Sent Sucessfully")
