@@ -3,15 +3,32 @@ import { Link } from "react-router-dom";
 import {auth} from "../firebase"
 import {signOut} from 'firebase/auth'
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navi=useNavigate()
+  const[log,setlog]=useState(false)
+
+  useEffect(()=>{
+    auth.onAuthStateChanged(function(user){
+        if(user){
+          setlog(true)
+         
+        }
+        else{
+          setlog(false)
+          console.log("logout")
+        }
+    })
+  })
+
+
   function logout()
   {
     signOut(auth).then(()=>{
 
-       alert("Sucessfully Loggedout") 
+    alert("Sucessfully Loggedout") 
     navi("/login")
     })
   }
@@ -47,7 +64,7 @@ const Navbar = () => {
           <li className="text-gray-300">•</li>
           <li><a className="text-sm text-gray-400  hover:text-white"  href="#">Activity</a></li>
           <li className="text-gray-300">•</li>
-          <li><a className="text-sm text-gray-400 hover:text-white" href="#">Progress</a></li>
+          <li><Link to={"/blog"} className="text-sm text-gray-400 hover:text-white" href="#">Blog</Link></li>
           <li className="text-gray-300">•</li>
           <li><a className="text-sm text-gray-400 hover:text-white" href="#">Gmail</a></li>
           
@@ -57,12 +74,16 @@ const Navbar = () => {
         {/* Desktop Buttons */}
         
         <div className="hidden lg:flex items-center space-x-3">
-          <Link to={"/signup"} className="py-2 px-6 bg-white hover:bg-gray-100 text-sm text-gray-800 font-bold rounded-xl transition duration-200">
-            Sign In
-          </Link>
-          <a onClick={logout} className="py-2 px-6 bg-black hover:bg-rose-300 text-sm text-white font-bold rounded-xl transition duration-200">
+
+          {
+            log?  <Link onClick={logout} className="py-2 px-6 bg-black hover:bg-rose-300 text-sm text-white font-bold rounded-xl transition duration-200">
             Logout
-          </a>
+          </Link>:<Link to={"/login"} className="py-2 px-6 bg-white hover:bg-gray-100 text-sm text-gray-800 font-bold rounded-xl transition duration-200">
+            Login
+          </Link>
+          }
+         
+
         </div>
       </nav>
 
@@ -96,7 +117,7 @@ const Navbar = () => {
 
             {/* Mobile Nav Links */}
             <ul>
-              {["Home", "Activity", "Progress", "Gmail"].map((item) => (
+              {["Home", "Activity", "Progress", "Gmail", "Blog"].map((item) => (
                 <li key={item} className="mb-1">
                   <a className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-rose-300 rounded">
                     {item}

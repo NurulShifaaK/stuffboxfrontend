@@ -4,6 +4,7 @@ import Login from './Login'
 import Name from './Name'
 import Register from './Register'
 import Home from './Home'
+import Blog from './Blog'
 
 
 const Dashboard = () => {
@@ -28,6 +29,8 @@ const Dashboard = () => {
          bg-rose-400
          [background-image:repeating-linear-gradient(to_right,rgba(255,255,255,0.08)_0,rgba(255,255,255,0.08)_3px,transparent_2px,transparent_100px),repeating-linear-gradient(to_bottom,rgba(255,255,255,0.08)_0,rgba(255,255,255,0.08)_3px,transparent_2px,transparent_100px)]`}>
         <Home/></div>}/>
+
+       <Route path={"/blog"} element={<Blog/>}/>
 
    </Routes>
    </BrowserRouter>

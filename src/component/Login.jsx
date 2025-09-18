@@ -12,7 +12,7 @@ const Login = () => {
     useEffect(()=>{
         auth.onAuthStateChanged(function(Uemail){
             if(Uemail){
-                console.log("Loggedin")
+        
                 navi("/home")
             }
             else{
